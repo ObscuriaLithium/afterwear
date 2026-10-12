@@ -1,0 +1,43 @@
+{
+  "integrity.afterwear.pristine": "Pristine (%s%%)",
+  "integrity.afterwear.worn": "Worn (%s%%)",
+  "integrity.afterwear.damaged": "Damaged (%s%%)",
+  "integrity.afterwear.broken": "Broken",
+
+  "config.afterwear.category.degradation": "Degradation",
+  "config.afterwear.category.breakage": "Breakage",
+  "config.afterwear.category.repair": "Repair",
+
+  "config.afterwear.option.enable_degradation": "Enable Degradation",
+  "config.afterwear.option.enable_degradation.desc": "Makes item effectiveness depend on its degradation. As durability decreases, attribute effectiveness and mining speed are reduced according to the integrity formula.",
+
+  "config.afterwear.option.integrity_formula": "Integrity Formula",
+  "config.afterwear.option.integrity_formula.desc": "Determines the effectiveness multiplier based on degradation (§fD§7), from 0 (intact) to 1 (fully degraded). A result of 1 preserves full effectiveness, while 0 disables it entirely.",
+
+  "config.afterwear.option.degradation_attributes": "Attributes",
+  "config.afterwear.option.degradation_attributes.desc": "Attributes affected by degradation.",
+
+  "config.afterwear.option.degradation_whitelist": "Item Whitelist",
+  "config.afterwear.option.degradation_whitelist.desc": "Items affected by degradation.\n\nSupports:\n- §f@§7 Categories\n- §f$§7 Armor Materials\n- §f%§7 Tiers\n- §f#§7 Tags\n- Item IDs",
+
+  "config.afterwear.option.degradation_blacklist": "Item Blacklist",
+  "config.afterwear.option.degradation_blacklist.desc": "Items excluded from degradation. Takes priority over the whitelist.\n\nSupports:\n- §f@§7 Categories\n- §f$§7 Armor Materials\n- §f%§7 Tiers\n- §f#§7 Tags\n- Item IDs",
+
+  "config.afterwear.option.enable_breakage_rework": "Enable Breakage Rework",
+  "config.afterwear.option.enable_breakage_rework.desc": "Prevents items from being destroyed when their durability reaches zero. Instead, they become unusable until repaired.",
+
+  "config.afterwear.option.pass_interactions": "Pass Interactions",
+  "config.afterwear.option.pass_interactions.desc": "Whether broken items can still be used for interactions, such as shearing sheep with shears.",
+
+  "config.afterwear.option.breakage_whitelist": "Item Whitelist",
+  "config.afterwear.option.breakage_whitelist.desc": "Items protected from destruction at zero durability.\n\nSupports:\n- §f@§7 Categories\n- §f$§7 Armor Materials\n- §f%§7 Tiers\n- §f#§7 Tags\n- Item IDs",
+
+  "config.afterwear.option.breakage_blacklist": "Item Blacklist",
+  "config.afterwear.option.breakage_blacklist.desc": "Items excluded from breakage rework. Takes priority over the whitelist.\n\nSupports:\n- §f@§7 Categories\n- §f$§7 Armor Materials\n- §f%§7 Tiers\n- §f#§7 Tags\n- Item IDs",
+
+  "config.afterwear.option.enable_repair_rework": "Repair Rework",
+  "config.afterwear.option.enable_repair_rework.desc": "Replaces the vanilla anvil cost formula with a custom formula when repairing items using a repair material.",
+
+  "config.afterwear.option.repair_cost_formula": "Repair Cost Formula",
+  "config.afterwear.option.repair_cost_formula.desc": "Determines the anvil cost of material repairs. Supports §fM§7 (number of materials used) and §fE§7 (number of enchantments)."
+}
