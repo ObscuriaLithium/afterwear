@@ -42,14 +42,14 @@ object CommonConfig {
 		ENABLE_DEGRADATION = builder.define("enable_degradation", true)
 		INTEGRITY_FORMULA = builder.defineString("integrity_formula", "1 - D^3")
 		DEGRADATION_ATTRIBUTES = builder.defineList("degradation_attributes", listOf("minecraft:generic.attack_damage", "minecraft:generic.armor", "minecraft:generic.armor_toughness"))
-		DEGRADATION_WHITELIST = builder.defineList("degradation_whitelist", listOf("@armor", "@weapons", "@tools"))
+		DEGRADATION_WHITELIST = builder.defineList("degradation_whitelist", listOf("@armor", "@weapons", "@tools", "minecraft:trident"))
 		DEGRADATION_BLACKLIST = builder.defineList("degradation_blacklist", emptyList())
 		builder.popCategory()
 
 		builder.pushCategory("Breakage")
 		ENABLE_BREAKAGE_REWORK = builder.define("enable_breakage_rework", true)
 		PASS_INTERACTIONS = builder.define("pass_interactions", true)
-		BREAKAGE_WHITELIST = builder.defineList("breakage_whitelist", listOf("@armor", "@weapons", "@tools"))
+		BREAKAGE_WHITELIST = builder.defineList("breakage_whitelist", listOf("@armor", "@weapons", "@tools", "minecraft:trident", "minecraft:shears", "minecraft:fishing_rod"))
 		BREAKAGE_BLACKLIST = builder.defineList("breakage_blacklist", listOf("%wood", "%stone", $$"$leather"))
 		builder.popCategory()
 
