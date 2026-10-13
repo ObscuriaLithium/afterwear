@@ -41,16 +41,19 @@ internal object BreakageHelper {
 	}
 
 	fun modifyTooltip(stack: ItemStack, original: MutableList<Component>): List<Component> {
-		if (!stack.isDegradable) return original
-		val integrity = (stack.integrity * 100).roundToInt()
-		original.add(
-			1, when {
-				integrity >= 75 -> tr("pristine", integrity, ChatFormatting.DARK_GREEN)
-				integrity >= 25 -> tr("worn", integrity, ChatFormatting.GOLD)
-				integrity > 0 -> tr("damaged", integrity, ChatFormatting.RED)
-				else -> tr("broken", integrity, ChatFormatting.RED)
-			}
-		)
+		if (stack.isDegradable) {
+			val integrity = (stack.integrity * 100).roundToInt()
+			original.add(
+				1, when {
+					integrity >= 75 -> tr("pristine", integrity, ChatFormatting.DARK_GREEN)
+					integrity >= 25 -> tr("worn", integrity, ChatFormatting.GOLD)
+					integrity > 0 -> tr("damaged", integrity, ChatFormatting.RED)
+					else -> tr("broken", integrity, ChatFormatting.RED)
+				}
+			)
+		} else if (stack.isBroken) {
+			original.add(1, tr("broken", 0, ChatFormatting.RED))
+		}
 		return original
 	}
 
