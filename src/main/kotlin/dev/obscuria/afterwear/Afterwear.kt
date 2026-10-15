@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory
 object Afterwear {
 
 	const val MOD_ID: String = /*$ mod_id*/ "afterwear";
-	const val MOD_VERSION: String = /*$ mod_version*/ "1.1.0";
+	const val MOD_VERSION: String = /*$ mod_version*/ "1.2.0";
 	const val MOD_FRIENDLY_NAME: String = /*$ mod_name*/ "Afterwear";
 	val LOGGER: Logger = LoggerFactory.getLogger(MOD_ID)
 
