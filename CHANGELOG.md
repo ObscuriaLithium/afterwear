@@ -1,3 +1,7 @@
+## [1.2.1] - 2026-10-15
+
+* Fixed a build issue that prevented mixins from being registered
+
 ## [1.2.0] - 2026-10-15
 
 * Added support for 1.21.1

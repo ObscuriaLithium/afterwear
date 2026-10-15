@@ -25,7 +25,7 @@ public abstract class MixinItemStack21d1 {
 
 	@Inject(
 			//? fabric
-			method = "hurtAndBreak(ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/server/level/ServerPlayer;Ljava/util/function/Consumer;)V",
+			//method = "hurtAndBreak(ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/server/level/ServerPlayer;Ljava/util/function/Consumer;)V",
 			//? neoforge
 			//method = "hurtAndBreak(ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/LivingEntity;Ljava/util/function/Consumer;)V",
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;isDamageableItem()Z"), cancellable = true)
@@ -33,7 +33,7 @@ public abstract class MixinItemStack21d1 {
 			int amount,
 			ServerLevel level,
 			//? fabric
-			net.minecraft.server.level.ServerPlayer entity,
+			//net.minecraft.server.level.ServerPlayer entity,
 			//? neoforge
 			//net.minecraft.world.entity.LivingEntity entity,
 			Consumer<Item> consumer,
