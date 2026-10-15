@@ -1,7 +1,7 @@
 package dev.obscuria.afterwear.mixin;
 
 import dev.kikugie.fletching_table.annotation.MixinEnvironment;
-import dev.obscuria.afterwear.common.helper.BreakageHelper;
+import dev.obscuria.afterwear.common.helper.BreakageHelperShared;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.animal.Sheep;
@@ -21,7 +21,7 @@ public abstract class MixinSheep {
 			CallbackInfoReturnable<InteractionResult> cir
 	) {
 		var stack = player.getItemInHand(hand);
-		if (!BreakageHelper.INSTANCE.shouldPassInteraction(stack)) return;
+		if (!BreakageHelperShared.INSTANCE.shouldPassInteraction(stack)) return;
 		cir.setReturnValue(InteractionResult.PASS);
 	}
 }

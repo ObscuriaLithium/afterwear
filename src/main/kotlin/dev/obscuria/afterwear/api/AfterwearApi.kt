@@ -1,11 +1,7 @@
 package dev.obscuria.afterwear.api
 
-import com.google.common.collect.Multimap
-import dev.obscuria.afterwear.common.helper.BreakageHelper
-import dev.obscuria.afterwear.common.helper.DegradationHelper
-import net.minecraft.world.entity.EquipmentSlot
-import net.minecraft.world.entity.ai.attributes.Attribute
-import net.minecraft.world.entity.ai.attributes.AttributeModifier
+import dev.obscuria.afterwear.common.helper.BreakageHelperShared
+import dev.obscuria.afterwear.common.helper.DegradationHelperShared
 import net.minecraft.world.item.ItemStack
 
 /**
@@ -26,7 +22,7 @@ object AfterwearApi {
 	 * degradation blacklist, or it doesn't match the whitelist.
 	 */
 	val ItemStack.isDegradable: Boolean
-		get() = DegradationHelper.isDegradable(this)
+		get() = DegradationHelperShared.isDegradable(this)
 
 	/**
 	 * How worn out the stack is, from `0.0` (undamaged) to `1.0` (no durability left).
@@ -35,7 +31,7 @@ object AfterwearApi {
 	 * does not check [isDegradable].
 	 */
 	val ItemStack.degradation: Float
-		get() = DegradationHelper.getDegradation(this)
+		get() = DegradationHelperShared.getDegradation(this)
 
 	/**
 	 * The multiplier applied to a degradable stack's stats.
@@ -46,7 +42,7 @@ object AfterwearApi {
 	 * check [isDegradable].
 	 */
 	val ItemStack.integrity: Float
-		get() = DegradationHelper.getIntegrity(this)
+		get() = DegradationHelperShared.getIntegrity(this)
 
 	/**
 	 * Whether the stack uses the reworked breakage behavior: instead of vanishing
@@ -55,13 +51,13 @@ object AfterwearApi {
 	 * Depends on `enable_breakage_rework` and the breakage whitelist/blacklist.
 	 */
 	val ItemStack.isBreakable: Boolean
-		get() = BreakageHelper.isBreakable(this)
+		get() = BreakageHelperShared.isBreakable(this)
 
 	/**
 	 * Whether the stack is [breakable][isBreakable] and has run out of durability.
 	 */
 	val ItemStack.isBroken: Boolean
-		get() = BreakageHelper.isBroken(this)
+		get() = BreakageHelperShared.isBroken(this)
 
 	/**
 	 * Scales a block-breaking speed by the stack's [integrity].
@@ -71,27 +67,7 @@ object AfterwearApi {
 	 * @return [original] multiplied by the integrity, or unchanged if the stack isn't [degradable][isDegradable]
 	 */
 	fun degradeDestroySpeed(stack: ItemStack, original: Float): Float {
-		return DegradationHelper.degradeDestroySpeed(stack, original)
-	}
-
-	/**
-	 * Scales the stack's attribute modifiers by its [integrity].
-	 *
-	 * Only attributes listed in the `afterwear:degradable` tag are touched
-	 * (attack damage, armor and armor toughness by default); the rest pass through as is.
-	 * The input map is never modified, a new one is returned when scaling happens.
-	 *
-	 * @param stack the stack the modifiers belong to
-	 * @param slot the slot being queried; currently unused
-	 * @param multimap the modifiers to scale
-	 * @return the scaled modifiers, or [multimap] itself if the stack isn't [degradable][isDegradable] or there is nothing to scale
-	 */
-	fun degradeAttributes(
-		stack: ItemStack,
-		slot: EquipmentSlot,
-		multimap: Multimap<Attribute, AttributeModifier>
-	): Multimap<Attribute, AttributeModifier> {
-		return DegradationHelper.degradeAttributes(stack, slot, multimap)
+		return DegradationHelperShared.degradeDestroySpeed(stack, original)
 	}
 
 	/**
@@ -102,6 +78,6 @@ object AfterwearApi {
 	 * the item, such as the block or entity being targeted.
 	 */
 	fun shouldPassInteraction(stack: ItemStack): Boolean {
-		return BreakageHelper.shouldPassInteraction(stack)
+		return BreakageHelperShared.shouldPassInteraction(stack)
 	}
 }

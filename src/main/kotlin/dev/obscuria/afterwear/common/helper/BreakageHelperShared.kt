@@ -7,16 +7,12 @@ import dev.obscuria.afterwear.api.AfterwearApi.isDegradable
 import dev.obscuria.afterwear.config.CommonConfig
 import net.minecraft.ChatFormatting
 import net.minecraft.network.chat.Component
-import net.minecraft.server.level.ServerPlayer
-import net.minecraft.sounds.SoundEvents
-import net.minecraft.sounds.SoundSource
-import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.item.ItemStack
 import org.jetbrains.annotations.ApiStatus
 import kotlin.math.roundToInt
 
 @ApiStatus.Internal
-internal object BreakageHelper {
+internal object BreakageHelperShared {
 
 	fun isBreakable(stack: ItemStack): Boolean {
 		return CommonConfig.ENABLE_BREAKAGE_REWORK.get()
@@ -30,14 +26,6 @@ internal object BreakageHelper {
 
 	fun shouldPassInteraction(stack: ItemStack): Boolean {
 		return CommonConfig.PASS_INTERACTIONS.get() && stack.isBroken
-	}
-
-	fun <T : LivingEntity> hurtAndBreak(stack: ItemStack, entity: T, amount: Int): Boolean {
-		if (!stack.isBreakable) return false
-		if (stack.isBroken) return true
-		if (!stack.hurt(amount, entity.random, entity as? ServerPlayer)) return true
-		entity.level().playSound(null, entity.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.NEUTRAL)
-		return true
 	}
 
 	fun modifyTooltip(stack: ItemStack, original: MutableList<Component>): List<Component> {

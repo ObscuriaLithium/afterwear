@@ -14,7 +14,10 @@ internal object RepairHelper {
 	fun getRepairCost(stack: ItemStack, materialCount: Int): Int {
 		return CommonConfig.Cache.REPAIR_COST_EXPRESSION.get().evaluate(
 			materialCount.toDouble(),
+			//? 1.20.1
 			stack.enchantmentTags.size.toDouble()
+			//? 1.21.1
+			//stack.enchantments.size().toDouble()
 		).toInt()
 	}
 }

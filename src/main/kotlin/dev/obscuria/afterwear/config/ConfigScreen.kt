@@ -2,14 +2,14 @@ package dev.obscuria.afterwear.config
 
 import dev.obscuria.afterwear.Afterwear
 import dev.obscuria.afterwear.common.ItemCategory
+import dev.obscuria.afterwear.common.helper.ArmorMaterialHelper
 import dev.obscuria.fragmentum.api.config.screen.ConfigScreenFactory
 import net.minecraft.client.gui.screens.Screen
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
-import net.minecraft.world.item.ArmorMaterials
 import net.minecraft.world.item.Tiers
-import java.util.Locale
+import java.util.*
 
 object ConfigScreen {
 
@@ -43,7 +43,7 @@ object ConfigScreen {
 
 	private fun listItemRules(): List<String> {
 		return (ItemCategory.entries.map { "@${it.name.lowercase(Locale.ROOT)}" }
-			+ ArmorMaterials.entries.map { "$${it.name.lowercase(Locale.ROOT)}" }
+			+ ArmorMaterialHelper.listValues()
 			+ Tiers.entries.map { "%${it.name.lowercase(Locale.ROOT)}" }
 			+ BuiltInRegistries.ITEM.tagNames.map { "#${it.location}" }.toList()
 			+ BuiltInRegistries.ITEM.keySet().map(ResourceLocation::toString))

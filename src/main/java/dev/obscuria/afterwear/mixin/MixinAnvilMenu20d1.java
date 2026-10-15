@@ -1,5 +1,6 @@
 package dev.obscuria.afterwear.mixin;
 
+//? 1.20.1 {
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -22,12 +23,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AnvilMenu.class)
 @MixinEnvironment(type = MixinEnvironment.Env.DEFAULT)
-public abstract class MixinAnvilMenu extends ItemCombinerMenu {
+public abstract class MixinAnvilMenu20d1 extends ItemCombinerMenu {
 
 	@Shadow private int repairItemCountCost;
 	@Unique private boolean afterwear$materialRepair;
 
-	public MixinAnvilMenu(
+	public MixinAnvilMenu20d1(
 			@Nullable MenuType<?> type, int i, Inventory inventory,
 			ContainerLevelAccess containerLevelAccess
 	) {
@@ -58,3 +59,4 @@ public abstract class MixinAnvilMenu extends ItemCombinerMenu {
 		original.call(instance, cost);
 	}
 }
+//?}

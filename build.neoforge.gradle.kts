@@ -68,12 +68,22 @@ repositories {
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
 	maven("https://thedarkcolour.github.io/KotlinForForge/") { name = "Kotlin for Forge" }
 	maven("https://maven.isxander.dev/releases") { name = "Yet Another Config Lib" }
+	maven("https://redempt.dev") { name = "Crunch" }
 }
 
 dependencies {
+
+	fun includeLibrary(dependency: String) {
+		add("additionalRuntimeClasspath", dependency)
+		implementation(dependency)
+		jarJar(dependency)
+	}
+
 	implementation("dev.obscuria:fragmentum:${prop("deps.fragmentum")}+${prop("deps.minecraft")}-neoforge")
 	implementation("thedarkcolour:kotlinforforge-neoforge:${prop("deps.kotlinforforge")}")
 	implementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
+
+	includeLibrary("com.github.Redempt:Crunch:2.0.3")
 }
 
 tasks.named("createMinecraftArtifacts") {

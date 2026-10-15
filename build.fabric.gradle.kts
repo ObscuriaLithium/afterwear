@@ -65,7 +65,6 @@ repositories {
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
 	maven("https://raw.githubusercontent.com/Fuzss/modresources/main/maven/") { name = "Forge Config API Port" }
 	maven("https://maven.isxander.dev/releases") { name = "Yet Another Config Lib" }
-	maven("https://cursemaven.com") { name = "CurseMaven" }
 	maven("https://redempt.dev") { name = "Crunch" }
 }
 
@@ -100,8 +99,4 @@ dependencies {
 	modImplementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
 
 	includeLibrary("com.github.Redempt:Crunch:2.0.3")
-
-	if (sc.current.parsed.eq("1.21.1")) {
-		modLocalRuntime("curse.maven:worldedit-225608:5830452")
-	}
 }

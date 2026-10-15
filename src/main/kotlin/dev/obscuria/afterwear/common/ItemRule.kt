@@ -1,17 +1,12 @@
 package dev.obscuria.afterwear.common
 
+import dev.obscuria.afterwear.common.helper.ArmorMaterialHelper
 import dev.obscuria.fragmentum.Fragmentum
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
 import net.minecraft.tags.TagKey
-import net.minecraft.world.item.ArmorItem
-import net.minecraft.world.item.ArmorMaterial
-import net.minecraft.world.item.ArmorMaterials
-import net.minecraft.world.item.Item
-import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.Tier
-import net.minecraft.world.item.TieredItem
-import net.minecraft.world.item.Tiers
+import net.minecraft.world.item.*
+import java.util.Locale
 import java.util.function.Predicate
 
 interface ItemRule : Predicate<ItemStack> {
@@ -24,9 +19,9 @@ interface ItemRule : Predicate<ItemStack> {
 
 		fun parse(input: String): ItemRule = runCatching {
 			when (input.firstOrNull()) {
-				'@' -> CategoryRule(ItemCategory.valueOf(input.substring(1).uppercase()))
-				'%' -> TierRule(Tiers.valueOf(input.substring(1).uppercase()))
-				'$' -> MaterialRule(ArmorMaterials.valueOf(input.substring(1).uppercase()))
+				'@' -> CategoryRule(ItemCategory.valueOf(input.substring(1).uppercase(Locale.ROOT)))
+				'%' -> TierRule(Tiers.valueOf(input.substring(1).uppercase(Locale.ROOT)))
+				'$' -> MaterialRule(ArmorMaterialHelper.valueOf(input))
 				'#' -> TagRule(TagKey.create(Registries.ITEM, Fragmentum.parseId(input.substring(1))))
 				else -> DirectRule(BuiltInRegistries.ITEM.get(Fragmentum.parseId(input)))
 			}
@@ -45,7 +40,7 @@ interface ItemRule : Predicate<ItemStack> {
 		}
 	}
 
-	private data class MaterialRule(val material: ArmorMaterial) : ItemRule {
+	private data class MaterialRule(val material: ArmorMaterial?) : ItemRule {
 		override fun test(stack: ItemStack): Boolean {
 			return stack.item.let { it is ArmorItem && it.material == material }
 		}

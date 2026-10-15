@@ -1,15 +1,15 @@
 package dev.obscuria.afterwear.platform.neoforge;
 
 //? neoforge {
-/*import dev.obscuria.loot_journal.LootJournal;
+/*import dev.obscuria.afterwear.Afterwear;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
-@Mod(LootJournal.MOD_ID)
+@Mod(Afterwear.MOD_ID)
 public class NeoforgeEntrypoint {
 
 	public NeoforgeEntrypoint(IEventBus eventBus) {
-		LootJournal.INSTANCE.onInitialize();
+		Afterwear.INSTANCE.onInitialize();
 	}
 }
 *///?}
